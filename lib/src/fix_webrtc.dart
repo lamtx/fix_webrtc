@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/services.dart';
 
@@ -7,7 +8,11 @@ class FixWebrtc {
       const MethodChannel('com.seoiclick.fixwebrtc/fixwebrtc');
 
   static Future<void> setAudioTrackUsageAttribute(AudioTrackUsage usage) {
-    return _channel.invokeMethod("setAudioTrackUsageAttribute", usage.index);
+    if (Platform.isAndroid) {
+      return _channel.invokeMethod("setAudioTrackUsageAttribute", usage.index);
+    } else {
+      Future.value();
+    }
   }
 }
 
