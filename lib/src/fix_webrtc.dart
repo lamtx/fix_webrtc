@@ -11,7 +11,7 @@ class FixWebrtc {
     if (Platform.isAndroid) {
       return _channel.invokeMethod("setAudioTrackUsageAttribute", usage.index);
     } else {
-      Future.value();
+      return Future.value();
     }
   }
 }
